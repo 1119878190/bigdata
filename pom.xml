@@ -12,6 +12,7 @@
         <module>hadoop-study</module>
         <module>hive-study</module>
         <module>hbase-study</module>
+        <module>spark-study</module>
     </modules>
 
     <properties>
