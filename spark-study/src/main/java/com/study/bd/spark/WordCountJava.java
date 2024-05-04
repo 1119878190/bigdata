@@ -59,6 +59,8 @@ public class WordCountJava {
             }
         });
         // 第六步将结果打印到控制台
+        // 注意：只有当任务执行到这一行代码的时候，任务才会真正的开始执行计算
+        // 如果任务中没有这一行代码，前面的所有算子是不会执行的，最少要有一个action算子
         wordCountRDD.foreach(new VoidFunction<Tuple2<String, Integer>>() {
             @Override
             public void call(Tuple2<String, Integer> stringIntegerTuple2) throws Exception {
