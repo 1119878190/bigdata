@@ -31,7 +31,7 @@ public class WordCountJava {
         // 第二步：加载数据
         String path = "D:\\tmp\\testData\\words.txt";
         if (args.length == 1) {
-            // 脚本指定hdfs文件路径
+            // 脚本指定hdfs文件路径  hdfs://cdh03:8020/tmp/words.txt
             path = args[0];
         }
         JavaRDD<String> linesRDD = sc.textFile(path);
