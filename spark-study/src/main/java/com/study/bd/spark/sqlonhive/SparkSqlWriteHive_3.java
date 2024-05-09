@@ -1,18 +1,20 @@
 package com.study.bd.spark.sqlonhive;
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
 /**
  *
- * 通过spark sql 操作 hive
+ * spark写入数据到hive   sparkSql执行 insert into  ---推荐
  * @author lx
- * @date 2024/05/07
+ * @date 2024/05/09
  */
-public class SparkSqlReadHive {
+public class SparkSqlWriteHive_3 {
+
 
     public static void main(String[] args) {
-
         SparkConf sparkConf = new SparkConf();
         sparkConf.setMaster("local[*]");
 
@@ -22,14 +24,12 @@ public class SparkSqlReadHive {
                 .config(sparkConf)
                 // 开启对hive的支持
                 .enableHiveSupport()
-                .config("spark.sql.warehouse.dir","hdfs://cdh03:8020/user/hive/warehouse")
+                .config("spark.sql.warehouse.dir", "hdfs://cdh03:8020/user/hive/warehouse")
                 .getOrCreate();
 
 
-//        System.setProperty("hadoop.home.dir","D:\\developSoft\\hadoop-3.2.0");
-        sparkSession.sql("select * from t1").show();
+        sparkSession.sql("insert into student_score_back values (4,'ssss','odod',5)");
 
         sparkSession.stop();
-
     }
 }
